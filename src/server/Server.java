@@ -1,13 +1,20 @@
+package server;
+
+import client.Client;
+
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Set;
 
 public class Server {
     private Socket clientSocket;
+    private static final int PORT = 30333;
+    private Set<Client> clientsSet;
 
     public void connect() {
         try {
-            try (ServerSocket socket = new ServerSocket(30333)) {
+            try (ServerSocket socket = new ServerSocket(PORT)) {
 
                 System.out.println("Сервер запущен!");
                 clientSocket = socket.accept();
@@ -26,6 +33,5 @@ public class Server {
         } catch (IOException e) {
             System.err.println(e);
         }
-
     }
 }
